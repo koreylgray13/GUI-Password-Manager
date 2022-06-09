@@ -7,7 +7,7 @@ root = Tk()
 root.title('Password Manager')
 root.geometry('400x400')
 
-# Create / Connect Database
+# Create Database
 conn = sqlite3.connect('passwords.db')
 
 # Create Cursor
