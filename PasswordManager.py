@@ -1,7 +1,7 @@
 from tkinter import *
 import sqlite3
 
-
+# Create GUI
 root = Tk()
 root.title('Password Manager')
 root.geometry('320x500')
@@ -19,11 +19,9 @@ query_frame.grid(row=2, column=0, pady=5, padx=5)
 query_frame2 = LabelFrame(root, text='Show Records', font=("Arial Bold", 9))
 query_frame2.grid(row=3, column=0, pady=5, padx=5)
 
-# Create / Connect Database
+# Connect To Database & Create Cursor
 conn = sqlite3.connect('passwords.db')
-# Create Cursor
 c = conn.cursor()
-
 
 # Create Submit Function
 def submit():
@@ -57,8 +55,6 @@ def update():
     c = conn.cursor()
 
     record_id = delete_box.get()
-
-
 
     c.execute("""UPDATE passwords SET 
         name = :name,
@@ -151,7 +147,7 @@ def delete():
     conn.close()
 
 
-# Create Query Function
+# Create Query Function To Show All Entries
 def query():
     conn = sqlite3.connect('passwords.db')
     c = conn.cursor()
@@ -217,7 +213,7 @@ def query():
     password_window.mainloop()
 
 
-# Create Query Function For Specific Tag
+# Create Query Function For Specific Tag/Category
 def query2():
     conn = sqlite3.connect('passwords.db')
     c = conn.cursor()
